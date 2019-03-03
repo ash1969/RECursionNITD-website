@@ -8,6 +8,20 @@
      <title>Document</title>
 </head>
 <body>
+     <h2>Total Questions Asked: {{ q_count }}</h2>
+     <h2>Total Answers: {{ answers.count }}</h2>
+     <h3>Most Recent Tags {{ limit }}</h3>
+     <ul>
+         {% for tag in tags_recent %}
+            <li><a href="{% url 'filter_question' tag.id  %}">{{ tag.name }}</a></li>
+         {% endfor %}
+     </ul>
+     <h3>Most Popular Tags</h3>
+     <ul>
+         {% for tag in tags_popular %}
+             <li><a href="{% url 'filter_question' tag.id  %}">{{ tag.name }}</a></li>
+         {% endfor %}
+     </ul>
      <ul>
          {% for question in questions %}
          <li><a href="{% url 'detail_questions' question.id %}">{{ question.title }}</a>
